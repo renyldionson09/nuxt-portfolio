@@ -10,6 +10,33 @@ import ContactSection from '../components/ContactSection.vue'
 import AppFooter from '../components/AppFooter.vue'
 
 
+useSeoMeta({
+  title: 'Renyl Dionson | UI/UX Designer & Web Developer',
+  description: 'Personal portfolio of Renyl Dionson, an aspiring UI/UX Designer and Web Developer.',
+
+  ogTitle: 'Renyl Dionson | Portfolio',
+  ogDescription: 'Explore my certifications, skills, and journey in UI/UX design and web development.',
+  ogType: 'website',
+
+  twitterCard: 'summary'
+})
+
+useHead({
+  htmlAttrs: {
+    lang: 'en'
+  },
+  meta: [
+    {
+      name: 'author',
+      content: 'Renyl Dionson'
+    },
+    {
+      name: 'theme-color',
+      content: '#080f20'
+    }
+  ]
+})
+
 
 
 type Certificate = {
@@ -75,15 +102,6 @@ onBeforeUnmount(() => {
   document.body.style.overflow = ''
 })
 
-useHead({
-  title: 'Renyl Dionson | Portfolio',
-  meta: [
-    {
-      name: 'description',
-      content: 'Portfolio of Renyl Dionson, aspiring UI/UX designer and IT student.',
-    },
-  ],
-})
 </script>
 
 <template>
@@ -97,21 +115,6 @@ useHead({
      <AboutSection />
 
       <CertificationsSection />
-
-      <div
-        v-if="selectedCertificate"
-        class="modal active"
-        role="dialog"
-        aria-modal="true"
-        :aria-label="selectedCertificate.alt"
-        @click.self="closeModal"
-      >
-        <button type="button" class="modal-close" aria-label="Close certificate preview" @click="closeModal">
-          &times;
-        </button>
-        <img class="modal-content" :src="selectedCertificate.src" :alt="selectedCertificate.alt" />
-        <div class="modal-caption">{{ selectedCertificate.alt }}</div>
-      </div>
 
       <TechStackSection />
 

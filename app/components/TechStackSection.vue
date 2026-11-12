@@ -228,6 +228,12 @@ const techCategories = [
   text-align: center;
 }
 
+.stack-item .badge {
+  min-height: 1.5rem;
+  padding-inline: 0.65rem;
+  font-size: 0.75rem;
+}
+
 /* Tablet */
 @media (max-width: 900px) {
   .stack-categories {
