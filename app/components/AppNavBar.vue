@@ -1,15 +1,24 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import {
+  House,
+  UserRound,
+  Award,
+  Code2,
+  Mail,
+  Menu,
+  X
+} from 'lucide-vue-next'
 
 const isMenuOpen = ref(false)
 
 const navLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About Me' },
-  { href: '#certifications', label: 'Certifications' },
-  { href: '#techstack', label: 'Tech Stacks' },
-  { href: '#contact', label: 'Contact' }
+  { href: '#home', label: 'Home', icon: House },
+  { href: '#about', label: 'About Me', icon: UserRound },
+  { href: '#certifications', label: 'Certifications', icon: Award },
+  { href: '#techstack', label: 'Tech Stacks', icon: Code2 },
+  { href: '#contact', label: 'Contact', icon: Mail }
 ]
 
 const closeMenu = () => {
@@ -22,19 +31,19 @@ const closeMenu = () => {
     <div class="nav-container">
 
       <a href="#home" class="logo" @click="closeMenu">
-        RD
+        RD<span class="logo-dot">.</span>
       </a>
 
       <button
-        class="nav-toggle"
-        :class="{ active: isMenuOpen }"
         type="button"
-        aria-label="Toggle navigation"
+        class="nav-toggle"
         :aria-expanded="isMenuOpen"
         aria-controls="portfolio-nav"
+        aria-label="Toggle navigation"
         @click="isMenuOpen = !isMenuOpen"
       >
-        <span class="hamburger"></span>
+        <X v-if="isMenuOpen" :size="25" />
+        <Menu v-else :size="25" />
       </button>
 
       <ul
@@ -46,10 +55,10 @@ const closeMenu = () => {
           <a
             :href="link.href"
             class="nav-link"
-            :class="{ active: link.href === '#home' }"
             @click="closeMenu"
           >
-            {{ link.label }}
+            <component :is="link.icon" :size="18" />
+            <span>{{ link.label }}</span>
           </a>
         </li>
       </ul>
@@ -57,3 +66,31 @@ const closeMenu = () => {
     </div>
   </nav>
 </template>
+
+<style scoped>
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+.nav-link svg {
+  flex-shrink: 0;
+}
+
+.nav-toggle {
+  color: #22d3ee;
+}
+
+.logo-dot {
+  color: #a78bfa;
+}
+
+@media (max-width: 768px) {
+  .nav-link {
+    width: 100%;
+    padding: 12px 16px;
+  }
+}
+</style>

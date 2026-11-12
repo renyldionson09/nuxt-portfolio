@@ -1,5 +1,6 @@
 
 <script setup lang="ts">
+import { Github, Linkedin, ArrowUp } from 'lucide-vue-next'
 const footerLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About Me', href: '#about' },
@@ -26,6 +27,20 @@ const footerLinks = [
             Passionate about creating meaningful,
             modern, and user-friendly digital experiences.
           </p>
+
+
+<div class="footer-bottom">
+  <p>
+    © {{ new Date().getFullYear() }} Renyl Dionson.
+    All rights reserved.
+  </p>
+
+  <a href="#home" class="back-to-top">
+    <span>Back to Top</span>
+    <ArrowUp :size="18" />
+  </a>
+</div>
+
         </div>
 
         <!-- Quick Links -->
@@ -45,39 +60,29 @@ const footerLinks = [
         </div>
 
         <!-- Socials -->
-        <div class="footer-social">
-          <h3 class="footer-heading">Connect With Me</h3>
+        
+<div class="footer-social-links">
+  <a
+    href="https://github.com/renyldionson09"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="GitHub"
+    class="footer-social-button"
+  >
+    <Github :size="21" />
+  </a>
 
-          <p class="footer-social-description">
-            Let's connect and create something amazing.
-          </p>
+  <a
+    href="https://www.linkedin.com/in/renyl-dionson"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn"
+    class="footer-social-button"
+  >
+    <Linkedin :size="21" />
+  </a>
+</div>
 
-          <div class="footer-social-links">
-            <a
-              href="https://github.com/renyldionson09"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              class="footer-social-button"
-            >
-              <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.76-1.32-3.76-1.32-.51-1.3-1.24-1.65-1.24-1.65-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 1.7 2.62 1.21 3.26.93.1-.72.39-1.21.71-1.49-2.48-.28-5.09-1.24-5.09-5.53 0-1.22.44-2.21 1.15-2.99-.12-.28-.5-1.42.11-2.95 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.11-1.44 3.04-1.14 3.04-1.14.61 1.53.23 2.67.11 2.95.72.78 1.15 1.77 1.15 2.99 0 4.3-2.61 5.25-5.1 5.53.4.35.76 1.03.76 2.08v3.08c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z" />
-              </svg>
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/renyl-dionson"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              class="footer-social-button"
-            >
-              <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.45H4.96V9.02h2.97v9.43ZM6.45 7.73a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44Zm12 10.72h-2.96v-4.59c0-1.09-.02-2.49-1.52-2.49-1.52 0-1.75 1.19-1.75 2.41v4.67H9.26V9.02h2.84v1.29h.04c.4-.74 1.36-1.52 2.8-1.52 3 0 3.55 1.97 3.55 4.53v5.13Z" />
-              </svg>
-            </a>
-          </div>
-        </div>
 
       </div>
 
@@ -197,4 +202,42 @@ const footerLinks = [
   }
 
 }
+
+
+.footer-bottom {
+  border-top: 1px solid #25334b;
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #22d3ee;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.back-to-top:hover {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
 </style>
