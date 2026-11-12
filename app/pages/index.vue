@@ -150,7 +150,7 @@ useHead({
       <section id="home" class="hero">
         <div class="hero-content">
           <div class="profile-image">
-            <img src="/image3.jpg" alt="Renyl Dionson - Professional Portrait" />
+            <img src="/image3.png" alt="Renyl Dionson - Professional Portrait" />
           </div>
           <h1 class="hero-title">Hi! I'm <span class="highlight">Renyl Dionson</span></h1>
           <p class="hero-subtitle">Aspiring UI/UX Designer</p>
@@ -163,7 +163,7 @@ useHead({
 
           <div class="about-content">
             <div class="about-image">
-              <img src="/image3.jpg" alt="Renyl Dionson" />
+              <img src="/image3.png" alt="Renyl Dionson" />
             </div>
 
             <div class="about-text">
