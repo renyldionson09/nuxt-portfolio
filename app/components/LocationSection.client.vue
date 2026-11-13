@@ -1,46 +1,68 @@
 
+
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { MapPin } from 'lucide-vue-next'
 import type { Map as LeafletMap } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
 const mapContainer = ref<HTMLElement | null>(null)
+
 let map: LeafletMap | null = null
+let isUnmounted = false
 
 onMounted(async () => {
-  if (!mapContainer.value) return
+  console.log('Leaflet initialization started')
 
-  const L = await import('leaflet')
+  await nextTick()
+
+  if (!mapContainer.value) {
+    console.error('Leaflet map container not found')
+    return
+  }
+
+  try {
+    const L = await import('leaflet')
+
+    if (isUnmounted || !mapContainer.value) return
+
+    const cavite: [number, number] = [14.2800, 120.8700]
+
+    map = L.map(mapContainer.value, {
+      scrollWheelZoom: false
+    }).setView(cavite, 10)
+
+    L.tileLayer(
+      'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {
+        attribution: '&copy; OpenStreetMap contributors',
+        maxZoom: 19
+      }
+    ).addTo(map)
+
+    L.circleMarker(cavite, {
+      radius: 20,
+      color: '#22d3ee',
+      fillColor: '#22d3ee',
+      fillOpacity: 0.8,
+      weight: 3
+    })
+      .addTo(map)
+      .bindPopup('Cavite, Philippines — General Location')
 
 
-  const cavite: [number, number] = [14.2800, 120.8700]
+    requestAnimationFrame(() => {
+      map?.invalidateSize()
+    })
 
-  map = L.map(mapContainer.value, {
-    scrollWheelZoom: false
-  }).setView(cavite, 10)
-
-  L.tileLayer(
-    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-      attribution:
-        '&copy; OpenStreetMap contributors',
-      maxZoom: 19
-    }
-  ).addTo(map)
-
-  L.circleMarker(cavite, {
-    radius: 20,
-    color: '#22d3ee',
-    fillColor: '#22d3ee',
-    fillOpacity: 0.8,
-    weight: 3
-  })
-    .addTo(map)
-    .bindPopup('General Trias, Cavite, Philippines')
+    console.log('Leaflet map initialized successfully')
+  } catch (error) {
+    console.error('Leaflet initialization failed:', error)
+  }
 })
 
 onBeforeUnmount(() => {
+  isUnmounted = true
   map?.remove()
   map = null
 })
