@@ -10,6 +10,7 @@ import ContactSection from '../components/ContactSection.vue'
 import AppFooter from '../components/AppFooter.vue'
 
 
+
 useSeoMeta({
   title: 'Renyl Dionson | UI/UX Designer & Web Developer',
   description: 'Personal portfolio of Renyl Dionson, an aspiring UI/UX Designer and Web Developer.',
@@ -117,6 +118,10 @@ onBeforeUnmount(() => {
       <CertificationsSection />
 
       <TechStackSection />
+
+<ClientOnly fallback-tag="div" fallback="Loading location map...">
+  <LocationSection />
+</ClientOnly>
 
       <ContactSection />
 
