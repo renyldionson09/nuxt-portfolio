@@ -30,11 +30,6 @@ const footerLinks = [
 
 
 <div class="footer-bottom">
-  <p>
-    © {{ new Date().getFullYear() }} Renyl Dionson.
-    All rights reserved.
-  </p>
-
   <a href="#home" class="back-to-top">
     <span>Back to Top</span>
     <ArrowUp :size="18" />
@@ -73,7 +68,7 @@ const footerLinks = [
   </a>
 
   <a
-    href="https://www.linkedin.com/in/renyl-dionson"
+    href="https://www.linkedin.com/in/renyl-dionson-97b927409"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="LinkedIn"
